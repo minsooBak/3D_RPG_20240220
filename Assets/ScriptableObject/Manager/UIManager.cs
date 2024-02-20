@@ -8,20 +8,39 @@ public class UIManager : ScriptableObject
 
     private readonly ResourceManager resource = GameManager.I.ResourceManager;
 
-    public T GetUI<T>() where T : UIBase
+    public T ShowUI<T>() where T : UIBase
     {
         foreach(UIBase u in _uiBases) 
         {
-            if (u is T) return u as T;
+            if (u is T)
+            {
+                u.Active();
+                return u as T;
+            }
         }
 
-        if (_uiCanvas == null) _uiCanvas = Instantiate(resource.GetResouce("UICanvas")).transform;
+        if (_uiCanvas == null)
+        {
+            _uiCanvas = Instantiate(resource.LoadGameObject("UICanvas")).transform;
+        }
 
-    T ui = Instantiate(resource.GetResouce(typeof(T).Name), _uiCanvas).GetComponent<T>();
+        T ui = resource.LoadGameObject(typeof(T).Name) as T;
 
         _uiBases.Add(ui);
 
         return ui;
+    }
+
+    public void DisableUI<T>()
+    {
+        foreach (UIBase u in _uiBases)
+        {
+            if (u is T)
+            {
+                u.Disable();
+                return;
+            }
+        }
     }
 
     public void Clear()

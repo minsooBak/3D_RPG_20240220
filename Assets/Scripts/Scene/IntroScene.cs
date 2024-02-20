@@ -9,7 +9,7 @@ public class IntroScene : IBaseScene
     {
         //초기 UI생성
         ResourceManager resourceManager = _gameManager.ResourceManager;
-        GameObject introUI = GameObject.Instantiate(resourceManager.GetResouce("IntroUI"));
+        GameObject introUI = resourceManager.LoadGameObject("IntroUI");
 
         //플레이어 데이터 체크 후 맵데이터 세팅 및 버튼 이벤트 변경
         if (resourceManager.IsExistsFile("PlayerData"))
@@ -20,7 +20,7 @@ public class IntroScene : IBaseScene
         {
             //캐릭터 선택씬으로
             ScenesManager scenesManager = _gameManager.ScenesManager;
-            scenesManager.ChangeSceneSetting(new IntroScene(), SceneState.TownScene);
+            scenesManager.ChangeSceneSetting(new TownScene(), SceneState.TownScene);
             Button startButton = introUI.GetComponentInChildren<Button>();
             Assert.IsNotNull(startButton);
             startButton.onClick.AddListener(scenesManager.ChangeScene);
