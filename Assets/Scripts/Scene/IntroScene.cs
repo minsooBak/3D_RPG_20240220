@@ -14,7 +14,8 @@ public class IntroScene : IBaseScene
         if (resourceManager.IsExistsFile("PlayerData"))
         {
             //던전or마을에 어느위치에 스폰되는지
-            //맵매니저의 Init(PlayerData data);
+            //맵매니저의 SettingData();
+            //맵매니저의 Init();
             //인트로 -> 캐릭터선택 or 던전 or 마을 
         }
         else
@@ -23,7 +24,7 @@ public class IntroScene : IBaseScene
             ScenesManager scenesManager = GameManager.ScenesManager;
             Button startButton = introUI.GetComponentInChildren<Button>();
             Assert.IsNotNull(startButton);
-            startButton.onClick.AddListener(()=> { scenesManager.ChangeSceneSetting(new TownScene(), SceneState.TownScene); scenesManager.ChangeScene(); });
+            startButton.onClick.AddListener(()=> { scenesManager.ChangeSceneSetting(SceneState.TownScene); scenesManager.ChangeScene(); });
             Assert.IsNotNull(startButton.onClick);
         }
     }

@@ -13,7 +13,7 @@ public class TownScene : IBaseScene
         ScenesManager scenesManager = GameManager.ScenesManager;
         Button startButton = introUI.GetComponentInChildren<Button>();
         Assert.IsNotNull(startButton);
-        startButton.onClick.AddListener(()=> { scenesManager.ChangeSceneSetting(new IntroScene(), SceneState.IntroScene); scenesManager.ChangeScene(); });
+        startButton.onClick.AddListener(()=> { scenesManager.ChangeSceneSetting(SceneState.IntroScene); scenesManager.ChangeScene(); });
         Assert.IsNotNull(startButton.onClick);
     }
 }
