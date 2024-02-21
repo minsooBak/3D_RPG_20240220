@@ -24,7 +24,7 @@ public class IntroScene : IBaseScene
             ScenesManager scenesManager = GameManager.ScenesManager;
             Button startButton = introUI.GetComponentInChildren<Button>();
             Assert.IsNotNull(startButton);
-            startButton.onClick.AddListener(()=> { scenesManager.ChangeSceneSetting(SceneState.TownScene); scenesManager.ChangeScene(); });
+            startButton.onClick.AddListener(()=> { scenesManager.ChangeScene(SceneState.TownScene); });
             Assert.IsNotNull(startButton.onClick);
         }
     }

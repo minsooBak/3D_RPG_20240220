@@ -37,22 +37,18 @@ public class ScenesManager : ScriptableObject
         _curScene = _scenes[0];
     }
 
-    public void ChangeSceneSetting(SceneState state)
+    public void ChangeScene(SceneState state)
     {
         _lateScene = _curScene;
         _curScene = _scenes[(int)state];
         _curState = state;
+        _uiManager.Clear();
+        SceneManager.LoadScene((int)_curState);
     }
 
     private void ChangScene(Scene scene, LoadSceneMode mode)
     {
         _lateScene?.Exit();
         _curScene.Init();
-    }
-
-    public void ChangeScene()
-    {
-        _uiManager.Clear();
-        SceneManager.LoadScene((int)_curState);
     }
 }
