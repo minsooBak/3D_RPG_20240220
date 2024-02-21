@@ -4,14 +4,6 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _i;
 
-    public static GameManager I
-    {
-        get
-        {
-            return _i;
-        }
-    }
-
     private void Awake()
     {
         if (_i == null) Init();
@@ -27,7 +19,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public ResourceManager ResourceManager { get; private set; }
-    public UIManager UIManager { get; private set; }
-    public ScenesManager ScenesManager { get; private set;}
+    public static ResourceManager ResourceManager { get; private set; }
+    public static UIManager UIManager { get; private set; }
+    public static ScenesManager ScenesManager { get; private set;}
 }

@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 public interface IBaseScene
 {
     public abstract void Init();
-    public virtual void Updated() { }
     public virtual void Exit() 
     {
-        GameManager.I.ResourceManager.UnloadUnusedAssets();
+        GameManager.ResourceManager.UnloadUnusedAssets();
     }
 }
 public enum SceneState
@@ -19,7 +18,7 @@ public enum SceneState
 
 public class ScenesManager : ScriptableObject
 {
-    private readonly UIManager _uiManager = GameManager.I.UIManager;
+    private readonly UIManager _uiManager = GameManager.UIManager;
     private IBaseScene _curScene = new IntroScene();
     private IBaseScene _lateScene;
     private SceneState _curState = SceneState.IntroScene;
@@ -39,11 +38,6 @@ public class ScenesManager : ScriptableObject
     private void ChangScene(Scene scene, LoadSceneMode mode)
     {
         _curScene.Init();
-    }
-
-    public void Updated()
-    {
-        _curScene.Updated();
     }
 
     public void ChangeScene()

@@ -6,7 +6,7 @@ public class UIManager : ScriptableObject
     private readonly List<UIBase> _uiBases = new();
     public Transform _uiCanvas;
 
-    private readonly ResourceManager resource = GameManager.I.ResourceManager;
+    private readonly ResourceManager resource = GameManager.ResourceManager;
 
     public T ShowUI<T>() where T : UIBase
     {
@@ -29,18 +29,6 @@ public class UIManager : ScriptableObject
         _uiBases.Add(ui);
 
         return ui;
-    }
-
-    public void DisableUI<T>()
-    {
-        foreach (UIBase u in _uiBases)
-        {
-            if (u is T)
-            {
-                u.Disable();
-                return;
-            }
-        }
     }
 
     public void Clear()

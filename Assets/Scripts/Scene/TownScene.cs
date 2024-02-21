@@ -4,20 +4,16 @@ using UnityEngine.UI;
 
 public class TownScene : IBaseScene
 {
-    private GameManager _gameManager = GameManager.I;
     public void Init()
     {
-        GameObject introUI = _gameManager.ResourceManager.LoadGameObject("IntroUI");
-        ScenesManager scenesManager = _gameManager.ScenesManager;
-        scenesManager.ChangeSceneSetting(new IntroScene(), SceneState.IntroScene);
+        //맵매니저 Init
+        
+        //밑에 코드는 테스트용
+        GameObject introUI = GameManager.ResourceManager.LoadGameObject("IntroUI");
+        ScenesManager scenesManager = GameManager.ScenesManager;
         Button startButton = introUI.GetComponentInChildren<Button>();
         Assert.IsNotNull(startButton);
-        startButton.onClick.AddListener(scenesManager.ChangeScene);
+        startButton.onClick.AddListener(()=> { scenesManager.ChangeSceneSetting(new IntroScene(), SceneState.IntroScene); scenesManager.ChangeScene(); });
         Assert.IsNotNull(startButton.onClick);
-    }
-
-    public void Updated()
-    {
-
     }
 }
