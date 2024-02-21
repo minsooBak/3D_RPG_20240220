@@ -20,7 +20,7 @@ public enum SceneState
 public class ScenesManager : ScriptableObject
 {
     private readonly UIManager _uiManager = GameManager.UIManager;
-    private readonly IBaseScene[] _scenes = new IBaseScene[2];
+    private readonly IBaseScene[] _scenes = new IBaseScene[Enum.GetValues(typeof(SceneState)).Length];
     private IBaseScene _curScene;
     private IBaseScene _lateScene;
     private SceneState _curState = SceneState.IntroScene;
