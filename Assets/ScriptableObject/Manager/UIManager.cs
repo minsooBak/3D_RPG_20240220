@@ -33,6 +33,7 @@ public class UIManager : ScriptableObject
 
     public void Clear()
     {
+        _uiCanvas = null;
         _uiBases.Clear();
     }
 
