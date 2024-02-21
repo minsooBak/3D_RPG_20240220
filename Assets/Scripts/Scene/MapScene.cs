@@ -2,8 +2,9 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
 
-public class TownScene : IBaseScene
+public class MapScene : IBaseScene
 {
+    //private MapManager
     public void Init()
     {
         //맵매니저 Init

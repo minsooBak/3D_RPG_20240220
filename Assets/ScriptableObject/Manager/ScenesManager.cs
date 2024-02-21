@@ -14,7 +14,7 @@ public interface IBaseScene
 public enum SceneState
 {
     IntroScene,
-    TownScene
+    MapScene
 }
 
 public class ScenesManager : ScriptableObject
