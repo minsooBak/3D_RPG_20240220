@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.UI;
-
 public class IntroScene : IBaseScene
 {
     public void Init()

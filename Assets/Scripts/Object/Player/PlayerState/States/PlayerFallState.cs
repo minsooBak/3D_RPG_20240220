@@ -1,4 +1,3 @@
-
 public class PlayerFallState : PlayerAirState
 {
     public PlayerFallState(PlayerMachine playerMachine) : base(playerMachine)

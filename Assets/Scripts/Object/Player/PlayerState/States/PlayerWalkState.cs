@@ -1,5 +1,4 @@
 using UnityEngine.InputSystem;
-
 public class PlayerWalkState : PlayerGroundState
 {
     public PlayerWalkState(PlayerMachine playerMachine) : base(playerMachine)

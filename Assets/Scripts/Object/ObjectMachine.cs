@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 public enum StateType
 {
     Idle,
@@ -15,8 +13,6 @@ public enum StateType
 
 public abstract class ObjectMachine<T> where T : ObjectState
 {
-    protected readonly Dictionary<StateType, PlayerBaseState> _states = new();
-    protected PlayerBaseState _curState;
     public T HashKey { get; private set; }
 
     public ObjectMachine(T objectState)
@@ -29,25 +25,9 @@ public abstract class ObjectMachine<T> where T : ObjectState
     /// </summary>
     public abstract void Init();
 
-    public void Update()
-    {
-        _curState.Update();
-    }
+    public abstract void Update();
 
-    public void PhysicsUpdate()
-    {
-        _curState.FixedUpdate();
-    }
+    public abstract void PhysicsUpdate();
 
-    public void HandleInput()
-    {
-        _curState.HandleInput();
-    }
-
-    public void ChangeState(StateType type)
-    {
-        _curState?.Exit();
-        _curState = _states[type];
-        _curState.Init();
-    }
+    public abstract void ChangeState(StateType type);
 }

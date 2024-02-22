@@ -1,11 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 
 public class PlayerMachine : ObjectMachine<JumpAttackState>
 {
-    public Player Player { get; private set; }
+    protected readonly Dictionary<StateType, PlayerBaseState> _states = new();
+    protected PlayerBaseState _curState;
 
+    public Player Player { get; private set; }
     public Vector2 MovementInput { get; set; }
     public float MovementSpeed { get; private set; }
     public float RotationDamping { get; private set; }
@@ -31,5 +33,27 @@ public class PlayerMachine : ObjectMachine<JumpAttackState>
         _states.Add(StateType.Run, new PlayerRunState(this));
         _states.Add(StateType.Jump, new PlayerJumpState(this));
         _states.Add(StateType.Fall, new PlayerFallState(this));
+    }
+
+    public override void Update()
+    {
+        _curState.Update();
+    }
+
+    public override void PhysicsUpdate()
+    {
+        _curState.FixedUpdate();
+    }
+
+    public void HandleInput()
+    {
+        _curState.HandleInput();
+    }
+
+    public override void ChangeState(StateType type)
+    {
+        _curState?.Exit();
+        _curState = _states[type];
+        _curState.Init();
     }
 }
