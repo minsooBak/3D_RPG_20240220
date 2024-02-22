@@ -12,12 +12,13 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        stateMachine = new PlayerMachine(this, new JumpAttackState());
         Input = new PlayerInputs();
         PlayerActions = Input.Keyboard;
+
         Animator = GetComponentInChildren<Animator>();
         Controller = GetComponent<CharacterController>();
         ForceReceiver = GetComponent<ForceReceiver>();
-        stateMachine = new PlayerMachine(this, new JumpAttackState());
     }
 
     private void OnEnable()
