@@ -19,9 +19,9 @@ public class PlayerWalkState : PlayerGroundState
         StopAnimation(playerMachine.HashKey.Walk);
     }
 
-    public override void OnRunStarted(InputAction.CallbackContext context)
+    public override void OnRunCanceled(InputAction.CallbackContext context)
     {
-        base.OnRunStarted(context);
+        base.OnRunCanceled(context);
         playerMachine.ChangeState(StateType.Run);
     }
 }
