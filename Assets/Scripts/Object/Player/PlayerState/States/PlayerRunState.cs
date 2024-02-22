@@ -12,9 +12,9 @@ public class PlayerRunState : PlayerGroundState
         StartAnimation(playerMachine.HashKey.Run);
     }
 
-    public override void OnRunPressed(InputAction.CallbackContext context)
+    public override void OnRunCanceled(InputAction.CallbackContext context)
     {
-        base.OnRunPressed(context);
+        base.OnRunCanceled(context);
         playerMachine.ChangeState(StateType.Walk);
     }
 
