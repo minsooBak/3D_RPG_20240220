@@ -40,7 +40,7 @@ public class PlayerBaseState : IState
     {
         PlayerInputs.KeyboardActions actions = playerMachine.Player.PlayerActions;
         actions.Move.canceled += OnMovementCanceled;
-        actions.Run.canceled += OnRunStarted;
+        actions.Run.canceled += OnRunCanceled;
         actions.Jump.canceled += OnJumpStart;
 
     }
@@ -49,13 +49,13 @@ public class PlayerBaseState : IState
     {
         PlayerInputs.KeyboardActions actions = playerMachine.Player.PlayerActions;
         actions.Move.canceled -= OnMovementCanceled;
-        actions.Run.canceled -= OnRunStarted;
+        actions.Run.canceled -= OnRunCanceled;
         actions.Jump.canceled -= OnJumpStart;
     }
 
     public virtual void OnJumpStart(InputAction.CallbackContext context) { }
 
-    public virtual void OnRunStarted(InputAction.CallbackContext context) {}
+    public virtual void OnRunCanceled(InputAction.CallbackContext context) {}
 
     public virtual void OnMovementCanceled(InputAction.CallbackContext context) {}
 
