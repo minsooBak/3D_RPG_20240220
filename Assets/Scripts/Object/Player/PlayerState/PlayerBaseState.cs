@@ -56,10 +56,8 @@ public class PlayerBaseState : IState
     }
 
     public virtual void OnJumpStart(InputAction.CallbackContext context) { }
-
     public virtual void OnRunStarted(InputAction.CallbackContext context) {}
     public virtual void OnRunCanceled(InputAction.CallbackContext context) { }
-
     public virtual void OnMovementCanceled(InputAction.CallbackContext context) {}
 
     private void ReadMovementInput()

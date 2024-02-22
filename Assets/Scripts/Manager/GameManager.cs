@@ -22,5 +22,4 @@ public class GameManager : MonoBehaviour
     public static ResourceManager ResourceManager { get; private set; }
     public static UIManager UIManager { get; private set; }
     public static ScenesManager ScenesManager { get; private set;}
-
 }
